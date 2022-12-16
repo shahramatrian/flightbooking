@@ -25,13 +25,6 @@ public class FlightController {
         this.flightService = flightService;
     }
 
-    // @GetMapping({"/{arrivalAirportCode}/{departureAirportCode}/{departureDate}"})
-    // public ResponseEntity<Flight> getFlightBySchedule(@PathVariable String arrivalAirportCode,
-    //     @PathVariable String departureAirportCode, @PathVariable String departureDate) {
-    //     Flight flight = flightService.getFlightBySchedule(arrivalAirportCode, departureAirportCode, departureDate);
-    //     return new ResponseEntity<>(flight, HttpStatus.OK);
-    // }
-
     @GetMapping
     public ResponseEntity<List<Flight>> getAllFlights() {
         List<Flight> flights = flightService.listFlights();

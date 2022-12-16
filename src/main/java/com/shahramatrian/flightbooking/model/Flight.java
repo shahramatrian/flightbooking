@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+
 public class Flight {
 
 	@Id
@@ -24,7 +25,7 @@ public class Flight {
     @Column
 	private String departureDate;
 
-    @Column
+    @Column(length = 3)
 	private String departureAirportCode;
 
     @Column
@@ -39,7 +40,7 @@ public class Flight {
     @Column
 	private String arrivalDate;
 
-    @Column
+    @Column(length = 3)
 	private String arrivalAirportCode;
 
     @Column
@@ -62,54 +63,4 @@ public class Flight {
 
     @Column
 	private int seatCapacity;
-
-	// @OneToOne
-    // @MapsId
-    // @JoinColumn(name = "booking_id")
-    // private Booking booking;
-	
-    // @OneToMany(mappedBy = "booking", fetch = FetchType.LAZY,
-    //         cascade = CascadeType.ALL)
-    // private Set<Booking> bookings;
-
-
-	// @Override
-	// public int hashCode() {
-	// 	final int prime = 31;
-	// 	int result = 1;
-	// 	result = prime * result + ((carrierName == null) ? 0 : carrierName.hashCode());
-	// 	result = prime * result + ((model == null) ? 0 : model.hashCode());
-	// 	result = prime * result + ((no == null) ? 0 : no.hashCode());
-	// 	result = prime * result + seatCapacity;
-	// 	return result;
-	// }
-
-	// @Override
-	// public boolean equals(Object obj) {
-	// 	if (this == obj)
-	// 		return true;
-	// 	if (obj == null)
-	// 		return false;
-	// 	if (getClass() != obj.getClass())
-	// 		return false;
-	// 	Flight other = (Flight) obj;
-	// 	if (carrierName == null) {
-	// 		if (other.carrierName != null)
-	// 			return false;
-	// 	} else if (!carrierName.equals(other.carrierName))
-	// 		return false;
-	// 	if (model == null) {
-	// 		if (other.model != null)
-	// 			return false;
-	// 	} else if (!model.equals(other.model))
-	// 		return false;
-	// 	if (no == null) {
-	// 		if (other.no != null)
-	// 			return false;
-	// 	} else if (!no.equals(other.no))
-	// 		return false;
-	// 	if (seatCapacity != other.seatCapacity)
-	// 		return false;
-	// 	return true;
-	// }
 }

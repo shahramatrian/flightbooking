@@ -63,10 +63,4 @@ public class FlightServiceImp implements FlightService{
     public void deleteFlight(Long flightId) {
         flightRepository.deleteById(flightId); 
     }
-
-    // @Override
-    // public Flight getFlightBySchedule(String arrivalAirportCode, String departureAirportCode, String departureDate) {
-    //     return flightRepository.findBySchedule(arrivalAirportCode, departureAirportCode, departureDate);
-    // }
-    
 }
