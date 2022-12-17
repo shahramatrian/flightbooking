@@ -40,10 +40,12 @@ The following endpoints can be tested with curl or Postman:
 
     [PUT] api/v1/cancel/{bookingId}
 
-## Deploy on AWS
-The application has beed succesfully deployed on AWS using the following services:
+## Prepare AWS Environment
+The application is deployed on AWS using the following services:
 - AWS Elastic Beanstalk
 - AWS RDS
+
+Here are the the steps to prepare the environment:
 
 ### Set up an Elastic Beanstalk application environment:
 
@@ -84,6 +86,19 @@ The application has beed succesfully deployed on AWS using the following service
     aws elasticbeanstalk update-environment --environment-name v1clone \
       --option-settings Namespace=aws:elasticbeanstalk:application:environment,OptionName=MYSQL_HOST,Value=flightbooking.coyo72ntjmdh.us-west-1.rds.amazonaws.com
 
+## Deploy on AWS
+
+### Create WAR or JAR file of the project
+        mvn clean package spring-boot:repackage
+
+### Upload the WAR file to the s3 bucket:
+        aws s3 cp target/flightbooking-0.0.1-SNAPSHOT.war s3://flightbooking-files/flightbooking-0.0.1-SNAPSHOT.war
+
+### Create a new version of the application version and update the environment:
+        aws elasticbeanstalk create-application-version --application-name flightbooking --version-label "0.0.1" --source-bundle S3Bucket="flightbooking-files",S3Key="flightbooking-0.0.1-SNAPSHOT.war"
+        aws elasticbeanstalk update-environment --environment-name v1clone --version-label "0.0.1"
+
 ## Future Improvements
 * Add authentication/authorization to backend
+* Add CI/CD
 * Use AWS Lambda to make some API serverless
