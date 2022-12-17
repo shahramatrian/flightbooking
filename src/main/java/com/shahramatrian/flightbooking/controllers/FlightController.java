@@ -62,7 +62,8 @@ public class FlightController {
         if (flight.getSeatCapacity() > 0) {
             flight.setSeatCapacity(flight.getSeatCapacity() - 1);
             flightService.updateFlight(flightId, flight);
-            return new ResponseEntity<>("Flight reserved", HttpStatus.OK);
+            int updatedSeatCapacity = flightService.getFlightById(flightId).getSeatCapacity();
+            return new ResponseEntity<>("Flight reserved. Seat capacity is: " + updatedSeatCapacity, HttpStatus.OK);
         } else {
             return new ResponseEntity<>("Flight not reserved. Seat capacity is zero", HttpStatus.OK);
         }
