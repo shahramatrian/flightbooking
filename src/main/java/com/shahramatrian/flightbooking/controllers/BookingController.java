@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -20,6 +21,7 @@ import com.shahramatrian.flightbooking.services.BookingService;
 
 @RestController
 @RequestMapping(path="/api/v1/bookings", produces={"application/json", "text/xml"})
+@CrossOrigin(origins="*")
 public class BookingController {
     private static final Logger Log = LoggerFactory.getLogger(BookingController.class);
 
