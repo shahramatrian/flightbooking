@@ -91,8 +91,8 @@ Here are the the steps to prepare the environment:
 ### Create WAR or JAR file of the project
         mvn clean package spring-boot:repackage
 
-### Upload the WAR file to the s3 bucket:
-        aws s3 cp target/flightbooking-0.0.1-SNAPSHOT.war s3://flightbooking-files/flightbooking-0.0.1-SNAPSHOT.war
+### Upload the JAR file to the s3 bucket:
+        aws s3 cp target/flightbooking-0.0.1-SNAPSHOT.jar s3://flightbooking-files/flightbooking-0.0.1-SNAPSHOT.jar
 
 ### Create a new version of the application version and update the environment:
         aws elasticbeanstalk create-application-version --application-name flightbooking --version-label "0.0.1" --source-bundle S3Bucket="flightbooking-files",S3Key="flightbooking-0.0.1-SNAPSHOT.war"
