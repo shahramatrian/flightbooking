@@ -20,7 +20,7 @@ import com.shahramatrian.flightbooking.model.Flight;
 import com.shahramatrian.flightbooking.services.FlightService;
 
 @RestController
-@RequestMapping("/api/v1/flights")
+@RequestMapping(path="/api/v1/flights", produces={"application/json", "text/xml"})
 public class FlightController {
     private static final Logger Log = LoggerFactory.getLogger(FlightController.class);
     FlightService flightService;
