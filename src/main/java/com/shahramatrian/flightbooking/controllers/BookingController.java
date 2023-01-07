@@ -36,7 +36,7 @@ public class BookingController {
         return new ResponseEntity<>(bookingService.getBooking(bookingId), HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping(consumes="application/json")
     public ResponseEntity<Booking> reserveBooking(@RequestBody Booking booking) {
         booking.setStatus(BookingStatus.UNCONFIRMED);
         try {

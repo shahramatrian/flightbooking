@@ -44,7 +44,7 @@ public class FlightController {
         }
     }
     
-    @PostMapping
+    @PostMapping(consumes="application/json")
     public ResponseEntity<Flight> addFlight(@RequestBody Flight flight) {
         try {
             Flight newFlight = flightService.createFlight(flight);
